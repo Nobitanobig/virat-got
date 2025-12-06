@@ -2,35 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Everything About Virat Kohli | Futuristic Tribute</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta
-    name="description"
-    content="A futuristic animated tribute website about Indian cricketer Virat Kohli – stats, career, family, photos, and more."
-  />
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Orbitron:wght@400;600;700&display=swap"
-    rel="stylesheet"
-  />
-
+  <title>Virat Kohli – Simple Profile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
+    /* ========= BASIC THEME ========= */
     :root {
-      --bg: #020617;
-      --bg-soft: #020617ee;
-      --glass: rgba(15, 23, 42, 0.9);
-      --accent: #22d3ee;
-      --accent-2: #22c55e;
-      --accent-3: #f97316;
-      --text: #e5e7eb;
-      --muted: #9ca3af;
-      --border-soft: rgba(148, 163, 184, 0.35);
-      --radius-xl: 24px;
-      --shadow-strong: 0 24px 80px rgba(15, 23, 42, 0.9);
-      --transition-fast: 200ms ease;
+      --bg: #f5f5f7;
+      --card: #ffffff;
+      --card-soft: #f1f5f9;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --accent: #2563eb;
+      --accent-soft: #dbeafe;
+      --border: #e2e8f0;
+      --radius: 16px;
     }
 
     * {
@@ -39,99 +24,38 @@
       box-sizing: border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
-      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #0f172a 0, #020617 45%, #000 100%);
-      color: var(--text);
-      min-height: 100vh;
-      overflow-x: hidden;
-      position: relative;
-    }
-
-    /* Background orbits / particles */
-    .bg-orbit,
-    .bg-orbit-2 {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: -2;
-      background:
-        radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.18), transparent 55%),
-        radial-gradient(circle at 80% 0%, rgba(251, 191, 36, 0.18), transparent 55%),
-        radial-gradient(circle at 50% 120%, rgba(52, 211, 153, 0.15), transparent 55%);
-      mix-blend-mode: screen;
-      animation: bgPulse 18s ease-in-out infinite alternate;
-    }
-
-    @keyframes bgPulse {
-      0% {
-        transform: scale(1);
-        opacity: 0.7;
-      }
-      50% {
-        transform: scale(1.03);
-        opacity: 1;
-      }
-      100% {
-        transform: scale(1.06) translateY(-8px);
-        opacity: 0.8;
-      }
-    }
-
-    .bg-grid-overlay {
-      position: fixed;
-      inset: 0;
-      background-image: linear-gradient(
-          rgba(148, 163, 184, 0.03) 1px,
-          transparent 1px
-        ),
-        linear-gradient(
-          90deg,
-          rgba(148, 163, 184, 0.03) 1px,
-          transparent 1px
-        );
-      background-size: 64px 64px;
-      mask-image: radial-gradient(circle at top, black 0, transparent 70%);
-      opacity: 0.9;
-      pointer-events: none;
-      z-index: -1;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      line-height: 1.5;
     }
 
     main {
-      max-width: 1200px;
+      max-width: 1000px;
       margin: 0 auto;
-      padding: 16px 16px 80px;
+      padding: 16px 16px 60px;
     }
 
-    /* HEADER / NAVBAR */
+    /* ========= HEADER ========= */
     header {
       position: sticky;
       top: 0;
-      z-index: 50;
-      backdrop-filter: blur(18px);
-      background: linear-gradient(
-        90deg,
-        rgba(15, 23, 42, 0.95),
-        rgba(15, 23, 42, 0.7),
-        rgba(15, 23, 42, 0.95)
-      );
-      border-bottom: 1px solid rgba(148, 163, 184, 0.25);
-      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.8);
+      z-index: 10;
+      background: rgba(245, 245, 247, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
     }
 
     .nav-inner {
-      max-width: 1200px;
+      max-width: 1000px;
       margin: 0 auto;
       padding: 10px 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      gap: 12px;
     }
 
     .brand {
@@ -141,700 +65,261 @@
     }
 
     .brand-logo {
-      width: 42px;
-      height: 42px;
+      width: 36px;
+      height: 36px;
       border-radius: 999px;
-      border: 1px solid rgba(56, 189, 248, 0.6);
-      background: radial-gradient(circle at 30% 0, #22d3ee 0, #0f172a 55%);
+      background: var(--accent);
+      color: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 0 40px rgba(56, 189, 248, 0.65);
-      transform: translateZ(0);
-      animation: spinGlow 14s linear infinite;
-    }
-
-    @keyframes spinGlow {
-      0% {
-        box-shadow: 0 0 28px rgba(56, 189, 248, 0.5);
-        transform: rotate(0deg);
-      }
-      50% {
-        box-shadow: 0 0 40px rgba(52, 211, 153, 0.65);
-      }
-      100% {
-        box-shadow: 0 0 28px rgba(56, 189, 248, 0.5);
-        transform: rotate(360deg);
-      }
-    }
-
-    .brand-logo span {
-      font-family: "Orbitron", system-ui;
-      font-size: 1rem;
-      letter-spacing: 1px;
-    }
-
-    .brand-meta {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .brand-title {
-      font-family: "Orbitron", system-ui;
+      font-weight: 700;
       font-size: 0.9rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #e5e7eb;
     }
 
-    .brand-sub {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--muted);
+    .brand-text {
+      font-size: 0.85rem;
+      font-weight: 600;
     }
 
     nav ul {
-      display: flex;
-      gap: 12px;
       list-style: none;
-      align-items: center;
+      display: flex;
+      gap: 10px;
+      font-size: 0.8rem;
     }
 
     nav a {
-      position: relative;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--muted);
       text-decoration: none;
+      color: var(--text-muted);
       padding: 4px 10px;
       border-radius: 999px;
-      transition: all var(--transition-fast);
-      overflow: hidden;
-    }
-
-    nav a::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(90deg, #22d3ee, #22c55e, #eab308);
-      opacity: 0;
-      transition: opacity var(--transition-fast);
-      z-index: -1;
+      transition: background 0.15s ease, color 0.15s ease;
     }
 
     nav a:hover {
-      color: #0b1120;
-      transform: translateY(-1px);
-    }
-
-    nav a:hover::before {
-      opacity: 1;
-    }
-
-    .nav-pill {
-      font-size: 0.7rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      padding: 6px 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
+      background: var(--accent-soft);
       color: var(--accent);
-      background: radial-gradient(circle at top left, #0ea5e9 0, #020617 50%);
-      box-shadow: 0 0 22px rgba(56, 189, 248, 0.5);
     }
 
-    .nav-pill span {
-      font-family: "Orbitron", system-ui;
-      font-size: 0.75rem;
+    @media (max-width: 720px) {
+      nav ul {
+        display: none; /* keep header super clean on mobile */
+      }
     }
 
-    .nav-toggle {
-      display: none;
-      width: 32px;
-      height: 32px;
-      position: relative;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.6);
-      background: rgba(15, 23, 42, 0.8);
-      align-items: center;
-      justify-content: center;
-    }
-
-    .nav-toggle span,
-    .nav-toggle span::before,
-    .nav-toggle span::after {
-      content: "";
-      width: 16px;
-      height: 2px;
-      border-radius: 999px;
-      background: #e5e7eb;
-      position: absolute;
-      transition: 0.2s ease;
-    }
-
-    .nav-toggle span::before {
-      transform: translateY(-5px);
-    }
-
-    .nav-toggle span::after {
-      transform: translateY(5px);
-    }
-
-    /* HERO */
+    /* ========= HERO ========= */
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.6fr);
-      gap: 32px;
-      align-items: center;
-      padding: 32px 0 40px;
+      grid-template-columns: minmax(0, 1.9fr) minmax(0, 1.4fr);
+      gap: 20px;
+      padding: 24px 0 28px;
     }
 
-    .hero-badge-row {
-      display: flex;
-      gap: 14px;
-      margin-bottom: 14px;
-      flex-wrap: wrap;
+    @media (max-width: 720px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
     }
 
     .pill {
-      border-radius: 999px;
-      padding: 5px 10px;
-      font-size: 0.7rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      border: 1px solid rgba(148, 163, 184, 0.55);
-      color: var(--muted);
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      background: rgba(15, 23, 42, 0.85);
-      backdrop-filter: blur(12px);
+      gap: 6px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      background: var(--card-soft);
+      color: var(--text-muted);
+      margin-bottom: 10px;
     }
 
     .pill-dot {
       width: 7px;
       height: 7px;
       border-radius: 999px;
-      background: radial-gradient(circle at center, #22c55e, #166534);
-      box-shadow: 0 0 12px rgba(34, 197, 94, 0.8);
+      background: #22c55e;
     }
 
-    .hero-title {
-      font-family: "Orbitron", system-ui;
-      font-size: clamp(2.1rem, 3vw, 3rem);
-      line-height: 1.05;
-      margin-bottom: 10px;
+    h1 {
+      font-size: clamp(1.9rem, 3vw, 2.6rem);
+      margin-bottom: 8px;
     }
 
-    .hero-title span.highlight {
-      background-image: linear-gradient(120deg, #22d3ee, #22c55e, #facc15);
-      -webkit-background-clip: text;
-      color: transparent;
-      text-shadow: 0 0 30px rgba(34, 211, 238, 0.6);
+    h1 span {
+      color: var(--accent);
     }
 
-    .hero-subtitle {
-      font-size: 0.95rem;
-      color: var(--muted);
-      max-width: 540px;
-      line-height: 1.7;
-      margin-bottom: 20px;
+    .hero-sub {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
     }
 
-    .hero-cta-row {
+    .hero-buttons {
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
-      margin-bottom: 18px;
+      gap: 8px;
+      margin-bottom: 10px;
     }
 
     .btn {
-      border-radius: 999px;
-      padding: 10px 18px;
-      font-size: 0.85rem;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
+      justify-content: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #ffffff;
+      font-size: 0.82rem;
       text-decoration: none;
-      color: #e5e7eb;
+      color: var(--text-main);
       cursor: pointer;
-      background: rgba(15, 23, 42, 0.9);
-      transition: all var(--transition-fast);
-      backdrop-filter: blur(10px);
+      transition: background 0.15s ease, border-color 0.15s ease;
     }
 
     .btn-primary {
-      border: none;
-      background: linear-gradient(135deg, #22d3ee, #22c55e, #eab308);
-      color: #020617;
-      font-weight: 600;
-      box-shadow: 0 14px 35px rgba(34, 211, 238, 0.45);
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #ffffff;
+    }
+
+    .btn:hover {
+      border-color: var(--accent);
+      background: #eef2ff;
     }
 
     .btn-primary:hover {
-      transform: translateY(-1px) scale(1.01);
-      box-shadow: 0 18px 40px rgba(34, 211, 238, 0.7);
+      background: #1d4ed8;
     }
 
-    .btn-outline {
-      border-style: dashed;
-      border-color: rgba(148, 163, 184, 0.9);
-    }
-
-    .btn-outline:hover {
-      transform: translateY(-1px);
-      border-color: rgba(56, 189, 248, 0.9);
-      color: #e5e7eb;
-    }
-
-    .hero-meta-row {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      font-size: 0.78rem;
-      color: var(--muted);
-    }
-
-    .hero-meta-row span {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .hero-meta-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: #22d3ee;
-    }
-
-    /* HERO RIGHT – 3D CARD */
-    .hero-right {
-      position: relative;
-      perspective: 1200px;
-    }
-
-    .player-card {
-      position: relative;
-      border-radius: 30px;
-      padding: 18px 18px 20px;
-      background: radial-gradient(circle at top left, #22d3ee33 0, #020617 45%);
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      box-shadow: var(--shadow-strong);
-      overflow: hidden;
-      transform-style: preserve-3d;
-      transform: rotateY(-10deg) rotateX(4deg);
-      animation: cardFloat 10s ease-in-out infinite alternate;
-    }
-
-    @keyframes cardFloat {
-      0% {
-        transform: rotateY(-10deg) rotateX(4deg) translateY(0);
-      }
-      50% {
-        transform: rotateY(-5deg) rotateX(3deg) translateY(-5px);
-      }
-      100% {
-        transform: rotateY(-12deg) rotateX(6deg) translateY(0);
-      }
-    }
-
-    .player-card-orbit {
-      position: absolute;
-      inset: -40%;
-      background:
-        radial-gradient(circle at 10% 20%, rgba(34, 211, 238, 0.18), transparent 60%),
-        radial-gradient(circle at 80% 80%, rgba(52, 211, 153, 0.18), transparent 60%);
-      opacity: 0.9;
-      filter: blur(6px);
-      mix-blend-mode: screen;
-      pointer-events: none;
-    }
-
-    .player-meta {
-      position: relative;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 14px;
-      z-index: 1;
-    }
-
-    .player-meta-left {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .player-name {
-      font-family: "Orbitron", system-ui;
-      font-size: 1rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
-
-    .player-role {
+    .hero-meta {
       font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    .player-tag {
-      font-size: 0.7rem;
-      padding: 4px 9px;
-      border-radius: 999px;
-      border: 1px solid rgba(56, 189, 248, 0.75);
-      background: rgba(15, 23, 42, 0.9);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-    }
-
-    .player-photo-wrap {
-      position: relative;
-      border-radius: 22px;
-      overflow: hidden;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      background: radial-gradient(circle at top, #1e293b 0, #020617 60%);
-      height: 260px;
-    }
-
-    .player-photo {
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(
-          180deg,
-          rgba(15, 23, 42, 0.1),
-          rgba(15, 23, 42, 0.95)
-        ),
-        url("https://images.assettype.com/freepressjournal/2024-11/7ee77a61-8f6c-4a2d-9f7a-36bcf0403add/Virat_Kohli_2.jpg?w=1200")
-          center top / cover no-repeat;
-      filter: saturate(1.05) contrast(1.05);
-      transform: scale(1.02);
-    }
-
-    .player-stats-strip {
-      position: relative;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 8px;
-      margin-top: 14px;
-      z-index: 1;
-    }
-
-    .player-stat {
-      border-radius: 15px;
-      padding: 7px 10px;
-      background: radial-gradient(circle at top, #0f172a, #020617);
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      font-size: 0.7rem;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .player-stat-label {
-      color: var(--muted);
-      font-size: 0.65rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .player-stat-value {
-      font-family: "Orbitron", system-ui;
-      font-size: 0.9rem;
-    }
-
-    .player-footnote {
-      margin-top: 10px;
-      font-size: 0.7rem;
-      color: var(--muted);
-    }
-
-    /* SECTION WRAPPER / PANEL */
-    section {
-      margin-top: 40px;
-    }
-
-    .panel {
-      border-radius: var(--radius-xl);
-      background: var(--bg-soft);
-      border: 1px solid var(--border-soft);
-      padding: 18px 16px 20px;
-      box-shadow: var(--shadow-strong);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .panel::before {
-      content: "";
-      position: absolute;
-      inset: -60%;
-      opacity: 0.08;
-      background:
-        radial-gradient(circle at 0 0, #22d3ee, transparent 60%),
-        radial-gradient(circle at 100% 100%, #22c55e, transparent 60%);
-      pointer-events: none;
-    }
-
-    .panel-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 14px;
-      gap: 10px;
-    }
-
-    .panel-title {
-      font-family: "Orbitron", system-ui;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      font-size: 0.85rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .panel-title-pill {
-      width: 9px;
-      height: 9px;
-      border-radius: 999px;
-      background: radial-gradient(circle at center, #22d3ee, #0ea5e9);
-      box-shadow: 0 0 12px rgba(34, 211, 238, 0.9);
-    }
-
-    .panel-subtitle {
-      font-size: 0.75rem;
-      color: var(--muted);
-    }
-
-    .pill-outline {
-      font-size: 0.68rem;
-      border-radius: 999px;
-      border: 1px dashed rgba(148, 163, 184, 0.65);
-      padding: 4px 9px;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--muted);
-    }
-
-    /* ABOUT / QUICK GRID */
-    .about-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.5fr) minmax(0, 2fr);
-      gap: 18px;
-      align-items: flex-start;
-      position: relative;
-      z-index: 1;
-    }
-
-    .about-text p {
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.7;
-      margin-bottom: 10px;
-    }
-
-    .chip-row {
+      color: var(--text-muted);
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
+    }
+
+    .hero-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 14px 14px 16px;
+    }
+
+    .hero-card h2 {
+      font-size: 0.9rem;
       margin-bottom: 6px;
     }
 
-    .chip {
-      font-size: 0.7rem;
-      padding: 4px 9px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      background: rgba(15, 23, 42, 0.85);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
+    .hero-card-main {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 6px;
     }
 
-    .chip-label {
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-size: 0.62rem;
-    }
-
-    .chip-value {
-      font-size: 0.8rem;
-    }
-
-    .about-stats {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-    }
-
-    .mini-stat {
-      border-radius: 16px;
-      padding: 9px 10px;
-      background: radial-gradient(circle at top, #0b1120, #020617);
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      font-size: 0.7rem;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .mini-stat-label {
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--muted);
-      font-size: 0.6rem;
-    }
-
-    .mini-stat-value {
-      font-family: "Orbitron", system-ui;
-      font-size: 0.95rem;
-    }
-
-    .mini-stat-meta {
-      font-size: 0.65rem;
-      color: var(--muted);
-    }
-
-    /* CAREER STATS SECTION */
-    .stats-grid {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 10px;
-    }
-
-    .format-card {
-      border-radius: 18px;
-      padding: 10px 10px 11px;
-      background: radial-gradient(circle at top, #020617, #020617);
-      border: 1px solid rgba(148, 163, 184, 0.55);
-      position: relative;
-      overflow: hidden;
-      font-size: 0.8rem;
-      transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
-    }
-
-    .format-card::before {
-      content: "";
-      position: absolute;
-      inset: -40%;
-      opacity: 0;
-      background:
-        conic-gradient(
-          from 0deg,
-          #22d3ee,
-          #22c55e,
-          #eab308,
-          #22d3ee
-        );
-      animation: spinBorder 14s linear infinite;
-      mix-blend-mode: screen;
-      transition: opacity 200ms ease;
-    }
-
-    @keyframes spinBorder {
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    .format-card-inner {
-      position: relative;
-      z-index: 1;
-    }
-
-    .format-name {
-      font-family: "Orbitron", system-ui;
-      font-size: 0.8rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
+    .hero-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
       margin-bottom: 4px;
     }
 
-    .format-meta {
-      font-size: 0.7rem;
-      color: var(--muted);
-      margin-bottom: 6px;
+    .hero-card strong {
+      color: var(--accent);
     }
 
-    .format-main-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      align-items: baseline;
-      margin-bottom: 6px;
+    /* ========= SECTIONS / CARDS ========= */
+    section.panel {
+      margin-top: 22px;
+      background: var(--card);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 14px 14px 16px;
     }
 
-    .format-main-number {
-      font-family: "Orbitron", system-ui;
-      font-size: 1.1rem;
+    .panel-header {
+      margin-bottom: 10px;
     }
 
-    .format-main-label {
-      font-size: 0.68rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--muted);
+    .panel-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 2px;
     }
 
-    .format-sub-row {
-      display: flex;
-      gap: 6px;
-      font-size: 0.65rem;
-      color: var(--muted);
+    .panel-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
     }
 
-    .format-sub-row span strong {
-      color: #e5e7eb;
-      font-weight: 500;
-    }
-
-    .format-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
-      border-color: rgba(56, 189, 248, 0.8);
-    }
-
-    .format-card:hover::before {
-      opacity: 0.16;
-    }
-
-    /* GALLERY SLIDER */
-    .gallery-layout {
-      position: relative;
-      z-index: 1;
+    .grid-3 {
       display: grid;
-      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.4fr);
-      gap: 20px;
-      align-items: stretch;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    @media (max-width: 720px) {
+      .grid-3 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .mini-card {
+      background: var(--card-soft);
+      border-radius: 12px;
+      padding: 10px;
+      font-size: 0.85rem;
+      border: 1px solid #e5e7eb;
+    }
+
+    .mini-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-bottom: 2px;
+    }
+
+    .mini-value {
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    /* ========= GALLERY SLIDER ========= */
+    .gallery-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.3fr);
+      gap: 14px;
+      margin-top: 6px;
+    }
+
+    @media (max-width: 720px) {
+      .gallery-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
     }
 
     .slider {
       position: relative;
       overflow: hidden;
-      border-radius: 20px;
-      border: 1px solid rgba(148, 163, 184, 0.65);
-      background: radial-gradient(circle at top, #020617, #020617);
+      border-radius: 12px;
+      border: 1px solid #e5e7eb;
+      background: #0f172a;
+      color: #ffffff;
     }
 
     .slider-track {
       display: flex;
-      transition: transform 500ms ease-in-out;
+      transition: transform 0.5s ease-in-out;
     }
 
     .slide {
       min-width: 100%;
+      height: 230px;
       position: relative;
-      height: 260px;
-      overflow: hidden;
+      background: #020617;
     }
 
     .slide img {
@@ -842,139 +327,78 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      transform: scale(1.05);
-      transition: transform 400ms ease-out;
-    }
-
-    .slide::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        180deg,
-        rgba(15, 23, 42, 0.15),
-        rgba(15, 23, 42, 0.9)
-      );
     }
 
     .slide-caption {
       position: absolute;
-      left: 14px;
-      right: 14px;
-      bottom: 10px;
-      z-index: 2;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
+      left: 10px;
+      right: 10px;
+      bottom: 8px;
       font-size: 0.8rem;
-    }
-
-    .slide-caption-main {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .slide-title {
-      font-weight: 600;
-    }
-
-    .slide-sub {
-      font-size: 0.7rem;
-      color: var(--muted);
+      background: rgba(15, 23, 42, 0.8);
+      padding: 6px 8px;
+      border-radius: 8px;
     }
 
     .slider-controls {
       position: absolute;
-      top: 10px;
-      right: 10px;
+      top: 8px;
+      right: 8px;
       display: flex;
       gap: 6px;
-      z-index: 2;
     }
 
     .slider-btn {
-      width: 28px;
-      height: 28px;
+      width: 26px;
+      height: 26px;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.8);
       background: rgba(15, 23, 42, 0.9);
-      display: inline-flex;
+      color: #e5e7eb;
+      display: flex;
       align-items: center;
       justify-content: center;
       font-size: 0.9rem;
       cursor: pointer;
-      color: #e5e7eb;
-      transition: all var(--transition-fast);
-      backdrop-filter: blur(8px);
-    }
-
-    .slider-btn:hover {
-      transform: translateY(-1px);
-      border-color: rgba(56, 189, 248, 0.9);
     }
 
     .slider-dots {
       position: absolute;
-      left: 10px;
+      left: 8px;
       top: 10px;
       display: flex;
       gap: 4px;
-      z-index: 2;
     }
 
     .slider-dot {
       width: 7px;
       height: 7px;
       border-radius: 999px;
-      background: rgba(148, 163, 184, 0.7);
-      transition: all var(--transition-fast);
+      background: rgba(148, 163, 184, 0.8);
     }
 
     .slider-dot.active {
-      width: 16px;
-      background: linear-gradient(90deg, #22d3ee, #22c55e);
-      box-shadow: 0 0 10px rgba(34, 211, 238, 0.8);
+      width: 14px;
+      background: #60a5fa;
     }
 
-    .gallery-right {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+    .gallery-text {
       font-size: 0.85rem;
-      color: var(--muted);
+      color: var(--text-muted);
     }
 
-    .gallery-right h3 {
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: #e5e7eb;
-    }
-
-    .badge-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .badge {
-      font-size: 0.68rem;
-      border-radius: 999px;
-      padding: 3px 8px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      background: rgba(15, 23, 42, 0.9);
-    }
-
-    /* FAMILY SECTION */
+    /* ========= FAMILY ========= */
     .family-grid {
-      position: relative;
-      z-index: 1;
       display: grid;
-      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.5fr);
-      gap: 18px;
-      align-items: stretch;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.4fr);
+      gap: 14px;
+      margin-top: 6px;
+    }
+
+    @media (max-width: 720px) {
+      .family-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
     }
 
     .family-cards {
@@ -983,611 +407,195 @@
       gap: 10px;
     }
 
-    .family-card {
-      border-radius: 18px;
-      padding: 9px 10px;
-      background: radial-gradient(circle at top, #020617, #020617);
-      border: 1px solid rgba(148, 163, 184, 0.55);
-      font-size: 0.8rem;
-    }
-
-    .family-role {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--muted);
-      margin-bottom: 2px;
-    }
-
-    .family-name {
-      font-weight: 600;
-      margin-bottom: 3px;
+    @media (max-width: 720px) {
+      .family-cards {
+        grid-template-columns: minmax(0, 1fr);
+      }
     }
 
     .family-note {
-      font-size: 0.73rem;
-      color: var(--muted);
-    }
-
-    .family-slider {
-      border-radius: 20px;
-      border: 1px solid rgba(148, 163, 184, 0.6);
-      overflow: hidden;
-      position: relative;
-      background: radial-gradient(circle at top, #020617, #020617);
-    }
-
-    .family-slide {
-      min-width: 100%;
-      height: 220px;
-      position: relative;
-    }
-
-    .family-slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transform: scale(1.06);
-      transition: transform 400ms ease-out;
-    }
-
-    .family-slide::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        180deg,
-        rgba(15, 23, 42, 0.1),
-        rgba(15, 23, 42, 0.95)
-      );
-    }
-
-    .family-slide-caption {
-      position: absolute;
-      left: 12px;
-      right: 12px;
-      bottom: 8px;
-      z-index: 2;
       font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 8px;
     }
 
-    .family-slide-title {
-      font-weight: 600;
-    }
-
-    .family-slide-sub {
-      font-size: 0.7rem;
-      color: var(--muted);
-    }
-
-    /* TIMELINE */
-    .timeline-wrapper {
-      position: relative;
-      z-index: 1;
-    }
-
-    .timeline-track {
-      position: relative;
-      padding-top: 8px;
-      overflow-x: auto;
+    /* ========= TIMELINE ========= */
+    .timeline-row {
       display: flex;
-      gap: 12px;
-      scrollbar-width: thin;
-      scrollbar-color: rgba(148, 163, 184, 0.6) transparent;
+      overflow-x: auto;
+      gap: 10px;
+      padding-bottom: 4px;
+      margin-top: 6px;
     }
 
-    .timeline-track::-webkit-scrollbar {
+    .timeline-row::-webkit-scrollbar {
       height: 4px;
     }
 
-    .timeline-track::-webkit-scrollbar-thumb {
-      background: rgba(148, 163, 184, 0.6);
+    .timeline-row::-webkit-scrollbar-thumb {
+      background: #cbd5f5;
       border-radius: 999px;
     }
 
     .timeline-card {
       min-width: 200px;
-      max-width: 230px;
-      border-radius: 18px;
-      padding: 10px 10px;
-      background: radial-gradient(circle at top, #020617, #020617);
-      border: 1px solid rgba(148, 163, 184, 0.55);
-      font-size: 0.75rem;
+      max-width: 220px;
+      background: var(--card-soft);
+      border-radius: 12px;
+      padding: 8px 10px;
+      border: 1px solid #e5e7eb;
+      font-size: 0.8rem;
     }
 
     .timeline-year {
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--muted);
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
       margin-bottom: 2px;
     }
 
     .timeline-title {
-      font-size: 0.83rem;
       font-weight: 600;
-      margin-bottom: 3px;
+      margin-bottom: 2px;
     }
 
-    .timeline-text {
-      font-size: 0.74rem;
-      color: var(--muted);
-    }
-
-    /* STAT COUNTERS */
-    .stat-counter {
-      opacity: 0.75;
-      transition: opacity 200ms ease;
-    }
-
-    .stat-counter[data-activated="true"] {
-      opacity: 1;
-    }
-
-    /* FOOTER */
+    /* ========= FOOTER ========= */
     footer {
-      margin-top: 32px;
-      padding: 16px 0 0;
-      border-top: 1px dashed rgba(148, 163, 184, 0.5);
-      font-size: 0.8rem;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      align-items: center;
+      margin-top: 24px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
       text-align: center;
-      color: var(--muted);
+      font-size: 0.8rem;
+      color: var(--text-muted);
     }
 
-    .footer-credit {
-      font-family: "Orbitron", system-ui;
+    footer .main-line {
+      margin-bottom: 4px;
       text-transform: uppercase;
-      letter-spacing: 0.14em;
-      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      font-size: 0.75rem;
     }
 
-    .footer-credit span.heart {
+    footer .heart {
       color: #f97316;
-      text-shadow: 0 0 18px rgba(248, 113, 113, 0.9);
     }
 
-    .footer-credit span.name {
-      color: #22d3ee;
+    footer .name {
+      color: var(--accent);
     }
 
-    .footer-credit span.place {
-      color: #22c55e;
-    }
-
-    .footer-mini {
-      font-size: 0.7rem;
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 960px) {
-      .hero {
-        grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.2fr);
-      }
-      .stats-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-      .family-grid,
-      .gallery-layout,
-      .about-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    @media (max-width: 768px) {
-      .nav-toggle {
-        display: inline-flex;
-      }
-
-      nav ul {
-        position: absolute;
-        inset-inline: 0;
-        top: 100%;
-        padding: 10px 16px 12px;
-        background: rgba(15, 23, 42, 0.98);
-        backdrop-filter: blur(18px);
-        border-bottom: 1px solid rgba(148, 163, 184, 0.4);
-        flex-direction: column;
-        align-items: flex-start;
-        transform-origin: top;
-        transform: scaleY(0);
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      nav ul.open {
-        transform: scaleY(1);
-        opacity: 1;
-        pointer-events: auto;
-      }
-
-      .hero {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .player-card {
-        transform: none;
-        animation: cardFloatMobile 12s ease-in-out infinite alternate;
-      }
-
-      @keyframes cardFloatMobile {
-        0% {
-          transform: translateY(0);
-        }
-        100% {
-          transform: translateY(-4px);
-        }
-      }
-
-      .stats-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 540px) {
-      main {
-        padding-inline: 12px;
-      }
-
-      .stats-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .family-cards {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .hero-title {
-        font-size: 1.8rem;
-      }
+    footer .place {
+      color: #16a34a;
     }
   </style>
 </head>
 <body>
-  <div class="bg-orbit"></div>
-  <div class="bg-grid-overlay"></div>
-
-  <!-- HEADER -->
   <header>
     <div class="nav-inner">
       <div class="brand">
-        <div class="brand-logo">
-          <span>VK</span>
-        </div>
-        <div class="brand-meta">
-          <div class="brand-title">Virat Kohli • 18</div>
-          <div class="brand-sub">Everything • Stats • Legacy</div>
-        </div>
+        <div class="brand-logo">VK</div>
+        <div class="brand-text">Virat Kohli – Simple Profile</div>
       </div>
-
-      <button class="nav-toggle" aria-label="Toggle navigation">
-        <span></span>
-      </button>
-
       <nav>
         <ul>
           <li><a href="#about">Overview</a></li>
-          <li><a href="#stats">Career Stats</a></li>
-          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#stats">Stats</a></li>
+          <li><a href="#gallery">Photos</a></li>
           <li><a href="#family">Family</a></li>
           <li><a href="#timeline">Timeline</a></li>
-          <li class="nav-pill">
-            <span>King Kohli Universe</span>
-          </li>
         </ul>
       </nav>
     </div>
   </header>
 
   <main>
-    <!-- HERO -->
-    <section class="hero" id="top">
+    <!-- HERO / ABOUT -->
+    <section class="hero" id="about">
       <div>
-        <div class="hero-badge-row">
-          <div class="pill">
-            <span class="pill-dot"></span>Official Tribute • Fan Made
-          </div>
-          <div class="pill">
-            <span>🏏</span>
-            <span>India • Right-Handed Top Order</span>
-          </div>
+        <div class="pill">
+          <span class="pill-dot"></span>
+          Clean, minimalist fan-made page
         </div>
-
-        <h1 class="hero-title">
-          Everything About
-          <span class="highlight">Virat Kohli</span> in
-          <span class="highlight">One Futuristic Page.</span>
+        <h1>
+          Everything about <span>Virat Kohli</span> in one simple view.
         </h1>
-
-        <p class="hero-subtitle">
-          From Delhi streets to becoming one of the greatest modern-day batters –
-          explore Virat Kohli’s journey: his age, records, international stats,
-          iconic knocks, family, and an immersive photo gallery – all wrapped in a
-          sci-fi inspired interface.
+        <p class="hero-sub">
+          Age, career stats, a few photos, and his family details – organised in a
+          calm, easy-to-read layout.
         </p>
-
-        <div class="hero-cta-row">
-          <a href="#stats" class="btn btn-primary">
-            📊 View Career Stats
-          </a>
-          <a href="#gallery" class="btn btn-outline">
-            🖼️ Open Photo Gallery
-          </a>
-          <a href="#family" class="btn btn-outline">
-            👨‍👩‍👧‍👦 Family & Virushka
-          </a>
+        <div class="hero-buttons">
+          <a href="#stats" class="btn btn-primary">📊 Career stats</a>
+          <a href="#gallery" class="btn">🖼️ Photo gallery</a>
+          <a href="#family" class="btn">👨‍👩‍👧‍👦 Family &amp; Virushka</a>
         </div>
-
-        <div class="hero-meta-row">
-          <span>
-            <span class="hero-meta-dot"></span>
-            <span id="hero-age-label">Age: calculating...</span>
-          </span>
-          <span>🔥 Over 27,000+ international runs</span>
-          <span>🏆 80+ international centuries</span>
+        <div class="hero-meta">
+          <span id="age-text">Age: calculating...</span>
+          <span>• Right-handed top-order batter</span>
+          <span>• Jersey No. 18</span>
         </div>
       </div>
 
-      <div class="hero-right">
-        <div class="player-card">
-          <div class="player-card-orbit"></div>
-          <div class="player-meta">
-            <div class="player-meta-left">
-              <div class="player-name">Virat Kohli</div>
-              <div class="player-role">India • Top Order Batter</div>
-            </div>
-            <div class="player-tag">#18 • King Kohli</div>
-          </div>
-          <div class="player-photo-wrap">
-            <!-- You can replace this background URL from CSS with your own local image if you want -->
-            <div class="player-photo"></div>
-          </div>
-          <div class="player-stats-strip">
-            <div class="player-stat">
-              <div class="player-stat-label">International Runs</div>
-              <div class="player-stat-value stat-counter" data-target="27000">0</div>
-              <div class="player-footnote">Across Test • ODI • T20I</div>
-            </div>
-            <div class="player-stat">
-              <div class="player-stat-label">ODI Centuries</div>
-              <div class="player-stat-value stat-counter" data-target="53">0</div>
-              <div class="player-footnote">Most in ODI history</div>
-            </div>
-            <div class="player-stat">
-              <div class="player-stat-label">ICC Titles</div>
-              <div class="player-stat-value stat-counter" data-target="5">0</div>
-              <div class="player-footnote">World Cups & ICC events</div>
-            </div>
-          </div>
-        </div>
+      <div class="hero-card">
+        <h2>Quick snapshot</h2>
+        <div class="hero-card-main">Virat Kohli</div>
+        <p>Born 5 November 1988 • Delhi, India</p>
+        <p>
+          International runs: <strong>27,000+*</strong> across Tests, ODIs &amp;
+          T20Is.
+        </p>
+        <p>
+          Known as the <strong>“Chase Master”</strong> and one of the greatest
+          modern batters.
+        </p>
+        <p style="font-size: 0.78rem; margin-top: 4px; color: var(--text-muted);">
+          *Numbers are approximate and rounded.
+        </p>
       </div>
     </section>
 
-    <!-- ABOUT / QUICK INFO -->
-    <section id="about" class="panel">
-      <div class="panel-header">
-        <div>
-          <div class="panel-title">
-            <span class="panel-title-pill"></span>
-            Overview & Quick Facts
-          </div>
-          <div class="panel-subtitle">
-            Who is Virat Kohli beyond the match scorecards.
-          </div>
-        </div>
-        <div class="pill-outline">Profile • Basics • Role</div>
-      </div>
-
-      <div class="about-grid">
-        <div class="about-text">
-          <p>
-            Virat Kohli (born 5 November 1988 in Delhi, India) is a
-            right-handed top-order batter, former captain of the Indian cricket
-            team, and one of the greatest modern-day run machines.
-          </p>
-          <p>
-            Famous as the
-            <strong>“Chase Master”</strong>, he’s known for his unreal consistency
-            while chasing, unmatched fitness, and intensity that lifts the entire
-            team.
-          </p>
-
-          <div class="chip-row">
-            <div class="chip">
-              <span class="chip-label">Born</span>
-              <span class="chip-value">5 Nov 1988 • Delhi</span>
-            </div>
-            <div class="chip">
-              <span class="chip-label">Batting Style</span>
-              <span class="chip-value">Right-handed • Top Order</span>
-            </div>
-            <div class="chip">
-              <span class="chip-label">Bowling</span>
-              <span class="chip-value">Right-arm medium (occasional)</span>
-            </div>
-            <div class="chip">
-              <span class="chip-label">Teams</span>
-              <span class="chip-value">India • Delhi • RCB/RCBengaluru</span>
-            </div>
-          </div>
-
-          <p>
-            From leading India to historic Test wins overseas to owning the ODI
-            record books, Kohli has inspired a generation of cricketers with his
-            professionalism, mental toughness, and passion for the game.
-          </p>
-        </div>
-
-        <div class="about-stats">
-          <div class="mini-stat">
-            <div class="mini-stat-label">Age</div>
-            <div class="mini-stat-value" id="age-display">–</div>
-            <div class="mini-stat-meta">Automatically calculated from DOB</div>
-          </div>
-          <div class="mini-stat">
-            <div class="mini-stat-label">International Debut</div>
-            <div class="mini-stat-value">2008</div>
-            <div class="mini-stat-meta">ODI vs Sri Lanka</div>
-          </div>
-          <div class="mini-stat">
-            <div class="mini-stat-label">Shirt Number</div>
-            <div class="mini-stat-value">18</div>
-            <div class="mini-stat-meta">Iconic jersey across formats</div>
-          </div>
-          <div class="mini-stat">
-            <div class="mini-stat-label">International Centuries</div>
-            <div class="mini-stat-value">80+</div>
-            <div class="mini-stat-meta">Test • ODI • T20I combined</div>
-          </div>
-          <div class="mini-stat">
-            <div class="mini-stat-label">World Cup 2023</div>
-            <div class="mini-stat-value">765</div>
-            <div class="mini-stat-meta">Most runs in a single WC edition</div>
-          </div>
-          <div class="mini-stat">
-            <div class="mini-stat-label">Iconic Alias</div>
-            <div class="mini-stat-value">King Kohli</div>
-            <div class="mini-stat-meta">Loved by billions worldwide</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CAREER STATS -->
+    <!-- STATS -->
     <section id="stats" class="panel">
       <div class="panel-header">
-        <div>
-          <div class="panel-title">
-            <span class="panel-title-pill"></span>
-            Career Stats Snapshot
-          </div>
-          <div class="panel-subtitle">
-            High-level numbers across formats (approximate, up to late 2025).
-          </div>
+        <div class="panel-title">Career stats (approximate)</div>
+        <div class="panel-sub">
+          Simple high-level numbers across formats (up to late 2025, rounded).
         </div>
-        <div class="pill-outline">Matches • Runs • Hundreds</div>
       </div>
 
-      <div class="stats-grid">
-        <!-- ODI -->
-        <article class="format-card">
-          <div class="format-card-inner">
-            <div class="format-name">ODI</div>
-            <div class="format-meta">One Day Internationals</div>
-            <div class="format-main-row">
-              <div>
-                <div class="format-main-number stat-counter" data-target="14492">
-                  0
-                </div>
-                <div class="format-main-label">Runs</div>
-              </div>
-              <div class="format-main-label">Matches: 300+ </div>
-            </div>
-            <div class="format-sub-row">
-              <span><strong>50+</strong> centuries</span>
-              <span>•</span>
-              <span><strong>50+</strong> fifties</span>
-            </div>
-            <div class="format-sub-row">
-              <span>Avg <strong>58+</strong> • SR around <strong>90+</strong></span>
-            </div>
+      <div class="grid-3">
+        <div class="mini-card">
+          <div class="mini-label">ODI</div>
+          <div class="mini-value">
+            <span class="stat-counter" data-target="14492">0</span> runs
           </div>
-        </article>
-
-        <!-- TEST -->
-        <article class="format-card">
-          <div class="format-card-inner">
-            <div class="format-name">Test</div>
-            <div class="format-meta">Red-ball cricket</div>
-            <div class="format-main-row">
-              <div>
-                <div class="format-main-number stat-counter" data-target="9230">
-                  0
-                </div>
-                <div class="format-main-label">Runs</div>
-              </div>
-              <div class="format-main-label">Matches: 120+</div>
-            </div>
-            <div class="format-sub-row">
-              <span><strong>30</strong> Test tons</span>
-              <span>•</span>
-              <span><strong>7</strong> double hundreds</span>
-            </div>
-            <div class="format-sub-row">
-              <span>Avg around <strong>47</strong></span>
-            </div>
+          <div>50+ centuries • average around 58.</div>
+        </div>
+        <div class="mini-card">
+          <div class="mini-label">Test</div>
+          <div class="mini-value">
+            <span class="stat-counter" data-target="9230">0</span> runs
           </div>
-        </article>
-
-        <!-- T20I -->
-        <article class="format-card">
-          <div class="format-card-inner">
-            <div class="format-name">T20I</div>
-            <div class="format-meta">Shortest international format</div>
-            <div class="format-main-row">
-              <div>
-                <div class="format-main-number stat-counter" data-target="4188">
-                  0
-                </div>
-                <div class="format-main-label">Runs</div>
-              </div>
-              <div class="format-main-label">Matches: 120+</div>
-            </div>
-            <div class="format-sub-row">
-              <span><strong>1</strong> T20I century</span>
-              <span>•</span>
-              <span><strong>35+</strong> fifties</span>
-            </div>
-            <div class="format-sub-row">
-              <span>Avg around <strong>49</strong> • SR 130+</span>
-            </div>
+          <div>30 Test hundreds • 7 double centuries.</div>
+        </div>
+        <div class="mini-card">
+          <div class="mini-label">T20I &amp; IPL</div>
+          <div class="mini-value">
+            <span class="stat-counter" data-target="12800">0</span>+ runs
           </div>
-        </article>
-
-        <!-- IPL -->
-        <article class="format-card">
-          <div class="format-card-inner">
-            <div class="format-name">IPL</div>
-            <div class="format-meta">Royal Challengers Bengaluru</div>
-            <div class="format-main-row">
-              <div>
-                <div class="format-main-number stat-counter" data-target="8661">
-                  0
-                </div>
-                <div class="format-main-label">Runs</div>
-              </div>
-              <div class="format-main-label">Matches: 260+</div>
-            </div>
-            <div class="format-sub-row">
-              <span><strong>8</strong> IPL 100s</span>
-              <span>•</span>
-              <span><strong>60+</strong> fifties</span>
-            </div>
-            <div class="format-sub-row">
-              <span>Most runs in IPL history</span>
-            </div>
-          </div>
-        </article>
+          <div>Run machine in the shortest formats.</div>
+        </div>
       </div>
     </section>
 
     <!-- GALLERY -->
     <section id="gallery" class="panel">
       <div class="panel-header">
-        <div>
-          <div class="panel-title">
-            <span class="panel-title-pill"></span>
-            Virat Kohli • Photo Gallery
-          </div>
-          <div class="panel-subtitle">
-            Sliding collection of moments – replace with your favourite photos.
-          </div>
+        <div class="panel-title">Virat Kohli – photo gallery</div>
+        <div class="panel-sub">
+          A few photos in a simple slider. You can replace them with your own
+          images later.
         </div>
-        <div class="pill-outline">On-field • Off-field • Celebrations</div>
       </div>
 
       <div class="gallery-layout">
@@ -1600,214 +608,141 @@
           </div>
 
           <div class="slider-track">
-            <!-- Slide 1 -->
             <div class="slide">
-              <img
-                src="images/virat-1.jpg"
-                alt="Virat Kohli celebrating an ODI century"
-              />
+              <img src="images/virat-1.jpg" alt="Virat Kohli celebrating" />
               <div class="slide-caption">
-                <div class="slide-caption-main">
-                  <div class="slide-title">Champion of Chases</div>
-                  <div class="slide-sub">
-                    Classic Kohli celebration after finishing a chase.
-                  </div>
-                </div>
-                <div class="badge">ODI Glory</div>
+                Virat Kohli celebrating another brilliant innings.
               </div>
             </div>
-
-            <!-- Slide 2 -->
             <div class="slide">
-              <img
-                src="images/virat-2.jpg"
-                alt="Virat Kohli playing a cover drive"
-              />
+              <img src="images/virat-2.jpg" alt="Virat Kohli playing a shot" />
               <div class="slide-caption">
-                <div class="slide-caption-main">
-                  <div class="slide-title">Iconic Cover Drive</div>
-                  <div class="slide-sub">
-                    The most replayed shot in modern cricket broadcasts.
-                  </div>
-                </div>
-                <div class="badge">Technique</div>
+                Classic cover drive – one of his trademark shots.
               </div>
             </div>
-
-            <!-- Slide 3 -->
             <div class="slide">
-              <img
-                src="images/virat-3.jpg"
-                alt="Virat Kohli in Indian jersey roaring"
-              />
+              <img src="images/virat-3.jpg" alt="Virat Kohli roaring" />
               <div class="slide-caption">
-                <div class="slide-caption-main">
-                  <div class="slide-title">Intensity Personified</div>
-                  <div class="slide-sub">
-                    Every run, every wicket – he lives the game.
-                  </div>
-                </div>
-                <div class="badge">Passion</div>
+                Intensity and passion that fans love him for.
               </div>
             </div>
-
-            <!-- Slide 4 -->
             <div class="slide">
-              <img
-                src="images/virat-4.jpg"
-                alt="Virat Kohli with trophy"
-              />
+              <img src="images/virat-4.jpg" alt="Virat Kohli with trophy" />
               <div class="slide-caption">
-                <div class="slide-caption-main">
-                  <div class="slide-title">Lifting Silverware</div>
-                  <div class="slide-sub">
-                    Captaining & contributing in big ICC tournaments.
-                  </div>
-                </div>
-                <div class="badge">Trophies</div>
+                Lifting trophies and carrying India’s batting for years.
               </div>
             </div>
           </div>
         </div>
 
-        <div class="gallery-right">
-          <h3>How to use this gallery in your repo</h3>
-          <p>
-            The slider is built with pure JavaScript. Just place your Virat Kohli
-            photos in an <code>images</code> folder and rename them to
-            <code>virat-1.jpg</code>, <code>virat-2.jpg</code>, etc., or update the
-            <code>src=""</code> paths.
+        <div class="gallery-text">
+          <p style="margin-bottom: 6px;">
+            How to manage these photos:
           </p>
-          <div class="badge-row">
-            <span class="badge">Auto-play slider</span>
-            <span class="badge">Manual arrows</span>
-            <span class="badge">Dots indicator</span>
-            <span class="badge">Smooth transitions</span>
-          </div>
-          <p>
-            You can add more slides by duplicating the
-            <code>&lt;div class="slide"&gt;...</code> blocks. The JavaScript will
-            automatically detect and animate them.
-          </p>
+          <ul style="font-size: 0.83rem; color: var(--text-muted); padding-left: 18px;">
+            <li>Put your images inside the <code>images</code> folder.</li>
+            <li>Keep the names like <code>virat-1.jpg</code>,
+              <code>virat-2.jpg</code>, or change the <code>src=""</code> in the
+              code.</li>
+            <li>You can remove or add slides by editing the
+              <code>&lt;div class="slide"&gt; ...</code> blocks.</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <!-- FAMILY & VIRUSHKA -->
+    <!-- FAMILY -->
     <section id="family" class="panel">
       <div class="panel-header">
-        <div>
-          <div class="panel-title">
-            <span class="panel-title-pill"></span>
-            Family • Virushka & Kids
-          </div>
-          <div class="panel-subtitle">
-            Behind the legend stands a strong and loving family.
-          </div>
+        <div class="panel-title">Family – Virushka &amp; kids</div>
+        <div class="panel-sub">
+          A quick look at the people closest to Virat Kohli.
         </div>
-        <div class="pill-outline">Wife • Parents • Siblings • Children</div>
       </div>
 
       <div class="family-grid">
         <div>
           <div class="family-cards">
-            <div class="family-card">
-              <div class="family-role">Wife</div>
-              <div class="family-name">Anushka Sharma</div>
-              <div class="family-note">
-                Bollywood actress and producer. The couple married on
-                <strong>11 December 2017</strong> in a beautiful ceremony in Italy.
-                Together, they’re lovingly called <strong>“Virushka”</strong>.
+            <div class="mini-card">
+              <div class="mini-label">Wife</div>
+              <div class="mini-value">Anushka Sharma</div>
+              <div>
+                Bollywood actress and producer. They married on
+                <strong>11 December 2017</strong> in Italy. The couple is often
+                called <strong>“Virushka”</strong>.
               </div>
             </div>
-
-            <div class="family-card">
-              <div class="family-role">Children</div>
-              <div class="family-name">Vamika &amp; Akaay</div>
-              <div class="family-note">
-                Their daughter <strong>Vamika</strong> was born on
-                <strong>11 January 2021</strong>, and their son
-                <strong>Akaay</strong> was born on <strong>15 February 2024</strong>.
+            <div class="mini-card">
+              <div class="mini-label">Children</div>
+              <div class="mini-value">Vamika &amp; Akaay</div>
+              <div>
+                Daughter <strong>Vamika</strong> was born in January 2021 and son
+                <strong>Akaay</strong> in February 2024.
               </div>
             </div>
-
-            <div class="family-card">
-              <div class="family-role">Parents</div>
-              <div class="family-name">Prem &amp; Saroj Kohli</div>
-              <div class="family-note">
-                Father <strong>Prem Kohli</strong> (late) was a criminal lawyer.
-                Mother <strong>Saroj Kohli</strong> is a homemaker and one of the
-                biggest pillars of support in Virat’s life.
+            <div class="mini-card">
+              <div class="mini-label">Parents</div>
+              <div class="mini-value">Prem &amp; Saroj Kohli</div>
+              <div>
+                Father <strong>Prem Kohli</strong> (late) was a lawyer. Mother
+                <strong>Saroj Kohli</strong> has been one of his biggest
+                supporters.
               </div>
             </div>
-
-            <div class="family-card">
-              <div class="family-role">Siblings</div>
-              <div class="family-name">Vikas &amp; Bhawna</div>
-              <div class="family-note">
-                Elder brother <strong>Vikas Kohli</strong> and elder sister
-                <strong>Bhawna Kohli Dhingra</strong> complete the close-knit
-                Kohli family.
+            <div class="mini-card">
+              <div class="mini-label">Siblings</div>
+              <div class="mini-value">Vikas &amp; Bhawna</div>
+              <div>
+                Elder brother <strong>Vikas</strong> and elder sister
+                <strong>Bhawna</strong> complete the close-knit Kohli family.
               </div>
             </div>
           </div>
 
-          <p style="margin-top: 10px; font-size: 0.8rem; color: var(--muted);">
-            The couple is very protective about their kids’ privacy, so be mindful
-            and respectful while sharing or using family photos.
+          <p class="family-note">
+            The family prefers to keep their kids’ lives private, so it’s always
+            good to respect that while sharing or using photos.
           </p>
         </div>
 
-        <div class="family-slider" data-slider="family">
+        <!-- FAMILY SLIDER -->
+        <div class="slider" data-slider="family">
           <div class="slider-dots" data-slider-dots></div>
+
           <div class="slider-controls">
             <button class="slider-btn" data-prev>‹</button>
             <button class="slider-btn" data-next>›</button>
           </div>
 
           <div class="slider-track">
-            <!-- Wife Photo -->
-            <div class="family-slide">
+            <div class="slide">
               <img
                 src="images/anushka-1.jpg"
-                alt="Anushka Sharma and Virat Kohli together"
+                alt="Virat Kohli with Anushka Sharma"
               />
-              <div class="family-slide-caption">
-                <div class="family-slide-title">Virushka</div>
-                <div class="family-slide-sub">
-                  Anushka Sharma &amp; Virat Kohli – one of India’s most loved
-                  power couples.
-                </div>
+              <div class="slide-caption">
+                Virat Kohli &amp; Anushka Sharma – one of India’s most loved
+                couples.
               </div>
             </div>
-
-            <!-- Family Photo -->
-            <div class="family-slide">
+            <div class="slide">
               <img
                 src="images/virat-family-1.jpg"
                 alt="Virat Kohli with his family"
               />
-              <div class="family-slide-caption">
-                <div class="family-slide-title">Family Bond</div>
-                <div class="family-slide-sub">
-                  Kohli often credits his parents and siblings for his discipline
-                  and drive.
-                </div>
+              <div class="slide-caption">
+                Kohli with his family, who have supported him since his early
+                days.
               </div>
             </div>
-
-            <!-- Parents / Childhood -->
-            <div class="family-slide">
+            <div class="slide">
               <img
                 src="images/virat-childhood.jpg"
-                alt="Young Virat Kohli childhood photo"
+                alt="Young Virat Kohli"
               />
-              <div class="family-slide-caption">
-                <div class="family-slide-title">From Delhi Lanes to World Stages</div>
-                <div class="family-slide-sub">
-                  A young Virat whose dream was to play for India – mission
-                  accomplished.
-                </div>
+              <div class="slide-caption">
+                Young Virat from his childhood days, long before becoming a
+                global star.
               </div>
             </div>
           </div>
@@ -1818,255 +753,184 @@
     <!-- TIMELINE -->
     <section id="timeline" class="panel">
       <div class="panel-header">
-        <div>
-          <div class="panel-title">
-            <span class="panel-title-pill"></span>
-            Career Timeline • Key Milestones
-          </div>
-          <div class="panel-subtitle">
-            Scroll sideways to travel through Virat Kohli’s journey.
-          </div>
+        <div class="panel-title">Simple career timeline</div>
+        <div class="panel-sub">
+          Scroll sideways to see a few key moments from his journey.
         </div>
-        <div class="pill-outline">Swipe • Drag • Scroll</div>
       </div>
 
-      <div class="timeline-wrapper">
-        <div class="timeline-track">
-          <article class="timeline-card">
-            <div class="timeline-year">1988</div>
-            <div class="timeline-title">Born in Delhi</div>
-            <p class="timeline-text">
-              Virat Kohli is born on 5 November 1988 in a Punjabi family in Delhi,
-              India.
-            </p>
-          </article>
-
-          <article class="timeline-card">
-            <div class="timeline-year">2008</div>
-            <div class="timeline-title">U19 World Cup &amp; ODI Debut</div>
-            <p class="timeline-text">
-              Captains India to victory in the U19 World Cup and makes his ODI
-              debut vs Sri Lanka.
-            </p>
-          </article>
-
-          <article class="timeline-card">
-            <div class="timeline-year">2011</div>
-            <div class="timeline-title">World Cup Winner</div>
-            <p class="timeline-text">
-              Part of the Indian team that wins the ICC Cricket World Cup on home
-              soil.
-            </p>
-          </article>
-
-          <article class="timeline-card">
-            <div class="timeline-year">2014–2018</div>
-            <div class="timeline-title">Rise as Captain</div>
-            <p class="timeline-text">
-              Becomes all-format captain, leads India to historic Test wins abroad
-              and dominates ODI records.
-            </p>
-          </article>
-
-          <article class="timeline-card">
-            <div class="timeline-year">2017</div>
-            <div class="timeline-title">Marries Anushka Sharma</div>
-            <p class="timeline-text">
-              Virat &amp; Anushka marry in a beautiful ceremony in Italy – the
-              birth of “Virushka”.
-            </p>
-          </article>
-
-          <article class="timeline-card">
-            <div class="timeline-year">2021</div>
-            <div class="timeline-title">Becomes a Father</div>
-            <p class="timeline-text">
-              Welcomes daughter Vamika. Focuses more on family while still
-              performing at the highest level.
-            </p>
-          </article>
-
-          <article class="timeline-card">
-            <div class="timeline-year">2023</div>
-            <div class="timeline-title">50th ODI Hundred</div>
-            <p class="timeline-text">
-              Breaks Sachin Tendulkar’s record with his 50th ODI century and
-              scores 700+ runs in a single World Cup.
-            </p>
-          </article>
-
-          <article class="timeline-card">
-            <div class="timeline-year">2024</div>
-            <div class="timeline-title">T20 World Cup & Second Child</div>
-            <p class="timeline-text">
-              Wins the T20 World Cup with India and welcomes his son, Akaay, in
-              February 2024.
-            </p>
-          </article>
-
-          <article class="timeline-card">
-            <div class="timeline-year">2025 &amp; Beyond</div>
-            <div class="timeline-title">ODI Legend</div>
-            <p class="timeline-text">
-              Steps away from Test cricket, continues as an ODI giant and IPL
-              superstar, inspiring the next generation.
-            </p>
-          </article>
+      <div class="timeline-row">
+        <div class="timeline-card">
+          <div class="timeline-year">1988</div>
+          <div class="timeline-title">Born in Delhi</div>
+          <div>
+            Virat Kohli is born on 5 November 1988 in Delhi, India.
+          </div>
+        </div>
+        <div class="timeline-card">
+          <div class="timeline-year">2008</div>
+          <div class="timeline-title">U19 World Cup &amp; ODI debut</div>
+          <div>
+            Captains India to the U19 World Cup title and makes his ODI debut vs
+            Sri Lanka.
+          </div>
+        </div>
+        <div class="timeline-card">
+          <div class="timeline-year">2011</div>
+          <div class="timeline-title">World Cup winner</div>
+          <div>
+            Part of the Indian team that wins the ICC Cricket World Cup on home
+            soil.
+          </div>
+        </div>
+        <div class="timeline-card">
+          <div class="timeline-year">2014–2018</div>
+          <div class="timeline-title">Captain &amp; run machine</div>
+          <div>
+            Becomes all-format captain and dominates run charts across formats.
+          </div>
+        </div>
+        <div class="timeline-card">
+          <div class="timeline-year">2017</div>
+          <div class="timeline-title">Marries Anushka</div>
+          <div>
+            Marries Anushka Sharma in Italy – fans lovingly call them “Virushka”.
+          </div>
+        </div>
+        <div class="timeline-card">
+          <div class="timeline-year">2021</div>
+          <div class="timeline-title">Becomes a father</div>
+          <div>
+            Welcomes daughter Vamika, balancing cricket and family life.
+          </div>
+        </div>
+        <div class="timeline-card">
+          <div class="timeline-year">2023</div>
+          <div class="timeline-title">50th ODI hundred</div>
+          <div>
+            Scores his 50th ODI century and sets records at the 2023 World Cup.
+          </div>
+        </div>
+        <div class="timeline-card">
+          <div class="timeline-year">2024</div>
+          <div class="timeline-title">T20 World Cup &amp; son</div>
+          <div>
+            Wins the T20 World Cup and welcomes his son Akaay in February 2024.
+          </div>
         </div>
       </div>
     </section>
 
     <!-- FOOTER -->
     <footer>
-      <div class="footer-credit">
+      <div class="main-line">
         Made With <span class="heart">❤️</span> By
         <span class="name">Avinash</span> from
         <span class="place">Dahgawan!</span>
       </div>
-      <div class="footer-mini">
-        This is a fan-made tribute page and not an official website of Virat
-        Kohli or BCCI.
+      <div>
+        This is a simple fan-made tribute page. Not an official Virat Kohli or
+        BCCI website.
       </div>
     </footer>
   </main>
 
   <script>
-    // ======== NAV TOGGLE (MOBILE) =========
-    const navToggle = document.querySelector(".nav-toggle");
-    const navList = document.querySelector("nav ul");
-    navToggle?.addEventListener("click", () => {
-      navList.classList.toggle("open");
-    });
-
-    // Close nav on link click (mobile)
-    navList?.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        navList.classList.remove("open");
-      });
-    });
-
-    // ======== AGE CALCULATOR =========
-    function calculateAge(dobStr) {
+    // ------- AGE (from DOB) -------
+    (function () {
+      const dob = new Date("1988-11-05");
       const today = new Date();
-      const dob = new Date(dobStr);
       let age = today.getFullYear() - dob.getFullYear();
       const m = today.getMonth() - dob.getMonth();
       if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) {
         age--;
       }
-      return age;
-    }
+      const ageEl = document.getElementById("age-text");
+      if (ageEl) {
+        ageEl.textContent = "Age: " + age + " years";
+      }
+    })();
 
-    const age = calculateAge("1988-11-05");
-    const ageDisplay = document.getElementById("age-display");
-    const heroAgeLabel = document.getElementById("hero-age-label");
-    if (ageDisplay) ageDisplay.textContent = age + " years";
-    if (heroAgeLabel) heroAgeLabel.textContent = "Age: " + age + " years";
-
-    // ======== STAT COUNTERS =========
+    // ------- SIMPLE STAT COUNTERS -------
     const counters = document.querySelectorAll(".stat-counter");
-
-    const animateCounter = (el) => {
-      const target = parseInt(el.getAttribute("data-target"), 10);
-      if (!target) return;
-      const duration = 1600; // ms
-      const start = performance.now();
-
-      const step = (now) => {
-        const progress = Math.min((now - start) / duration, 1);
-        const value = Math.floor(target * progress);
-        el.textContent = value.toLocaleString("en-IN");
-        if (progress < 1) {
-          requestAnimationFrame(step);
-        }
-      };
-      requestAnimationFrame(step);
-      el.dataset.activated = "true";
-    };
-
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
+          if (entry.isIntersecting && !entry.target.dataset.done) {
             const el = entry.target;
-            if (el.dataset.activated !== "true") {
-              animateCounter(el);
-            }
+            const target = parseInt(el.dataset.target, 10);
+            const start = performance.now();
+            const duration = 1200;
+            const step = (now) => {
+              const progress = Math.min((now - start) / duration, 1);
+              const value = Math.floor(target * progress);
+              el.textContent = value.toLocaleString("en-IN");
+              if (progress < 1) requestAnimationFrame(step);
+            };
+            requestAnimationFrame(step);
+            el.dataset.done = "1";
           }
         });
       },
       { threshold: 0.3 }
     );
-
     counters.forEach((c) => observer.observe(c));
 
-    // ======== GENERIC SLIDER LOGIC (for Virat gallery & family slider) =========
+    // ------- GENERIC SLIDER (used for Virat & family) -------
     document.querySelectorAll("[data-slider]").forEach((sliderEl) => {
       const track = sliderEl.querySelector(".slider-track");
-      const slides = Array.from(sliderEl.querySelectorAll(".slide, .family-slide"));
+      const slides = Array.from(sliderEl.querySelectorAll(".slide"));
       const prevBtn = sliderEl.querySelector("[data-prev]");
       const nextBtn = sliderEl.querySelector("[data-next]");
       const dotsContainer = sliderEl.querySelector("[data-slider-dots]");
-
       if (!track || slides.length === 0) return;
 
-      let currentIndex = 0;
-      let intervalId = null;
+      let index = 0;
+      let timerId = null;
 
-      // Create dots
-      const dots = slides.map((_, index) => {
+      // dots
+      const dots = slides.map((_, i) => {
         const dot = document.createElement("div");
-        dot.className = "slider-dot" + (index === 0 ? " active" : "");
-        dot.addEventListener("click", () => {
-          goToSlide(index, true);
-        });
-        dotsContainer?.appendChild(dot);
+        dot.className = "slider-dot" + (i === 0 ? " active" : "");
+        dot.addEventListener("click", () => goTo(i, true));
+        dotsContainer.appendChild(dot);
         return dot;
       });
 
-      const updateSlider = () => {
-        track.style.transform = `translateX(-${currentIndex * 100}%)`;
-        dots.forEach((d, i) => {
-          if (i === currentIndex) d.classList.add("active");
-          else d.classList.remove("active");
-        });
-      };
+      function update() {
+        track.style.transform = `translateX(-${index * 100}%)`;
+        dots.forEach((d, i) => d.classList.toggle("active", i === index));
+      }
 
-      const goToSlide = (index, stopAuto = false) => {
-        currentIndex = (index + slides.length) % slides.length;
-        updateSlider();
-        if (stopAuto) restartAutoPlay();
-      };
+      function goTo(i, stopAuto) {
+        index = (i + slides.length) % slides.length;
+        update();
+        if (stopAuto) restartAuto();
+      }
 
-      const next = (stopAuto = false) =>
-        goToSlide(currentIndex + 1, stopAuto);
-      const prev = (stopAuto = false) =>
-        goToSlide(currentIndex - 1, stopAuto);
+      function next(stopAuto) {
+        goTo(index + 1, stopAuto);
+      }
+
+      function prev(stopAuto) {
+        goTo(index - 1, stopAuto);
+      }
 
       prevBtn?.addEventListener("click", () => prev(true));
       nextBtn?.addEventListener("click", () => next(true));
 
-      const startAutoPlay = () => {
-        if (intervalId) clearInterval(intervalId);
-        intervalId = setInterval(() => {
-          next(false);
-        }, 5000);
-      };
-
-      const restartAutoPlay = () => {
-        startAutoPlay();
-      };
+      function restartAuto() {
+        if (timerId) clearInterval(timerId);
+        timerId = setInterval(() => next(false), 6000);
+      }
 
       sliderEl.addEventListener("mouseenter", () => {
-        if (intervalId) clearInterval(intervalId);
+        if (timerId) clearInterval(timerId);
       });
-      sliderEl.addEventListener("mouseleave", () => {
-        startAutoPlay();
-      });
+      sliderEl.addEventListener("mouseleave", restartAuto);
 
-      // Initial setup
-      updateSlider();
-      startAutoPlay();
+      update();
+      restartAuto();
     });
   </script>
 </body>
