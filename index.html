@@ -2,60 +2,99 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Virat Kohli – Simple Profile</title>
+  <title>Virat Kohli – Neon Minimal Tribute</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    /* ========= BASIC THEME ========= */
+    /* ========= THEME VARIABLES ========= */
     :root {
-      --bg: #f5f5f7;
-      --card: #ffffff;
-      --card-soft: #f1f5f9;
-      --text-main: #0f172a;
-      --text-muted: #64748b;
-      --accent: #2563eb;
-      --accent-soft: #dbeafe;
-      --border: #e2e8f0;
-      --radius: 16px;
+      --bg: #020617;
+      --bg-soft: #020617;
+      --card: #020617;
+      --card-soft: #020617;
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --accent: #38bdf8;
+      --accent-2: #22c55e;
+      --border: #1f2937;
+      --shadow-soft: 0 18px 50px rgba(15, 23, 42, 0.9);
+      --radius: 18px;
     }
 
+    body.theme-light {
+      --bg: #f4f4f5;
+      --bg-soft: #e5e7eb;
+      --card: #ffffff;
+      --card-soft: #f9fafb;
+      --text-main: #020617;
+      --text-muted: #6b7280;
+      --accent: #2563eb;
+      --accent-2: #16a34a;
+      --border: #e5e7eb;
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.08);
+    }
+
+    /* ========= RESET ========= */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
         sans-serif;
-      background: var(--bg);
+      background: radial-gradient(circle at top, #0b1120 0, #020617 55%, #000 100%);
       color: var(--text-main);
       line-height: 1.5;
+      min-height: 100vh;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    body.theme-light {
+      background: radial-gradient(circle at top, #e5e7eb 0, #f4f4f5 40%, #e5e7eb 100%);
     }
 
     main {
-      max-width: 1000px;
+      max-width: 1040px;
       margin: 0 auto;
-      padding: 16px 16px 60px;
+      padding: 16px 16px 70px;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    body.page-loaded main {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     /* ========= HEADER ========= */
     header {
       position: sticky;
       top: 0;
-      z-index: 10;
-      background: rgba(245, 245, 247, 0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
+      z-index: 20;
+      background: rgba(2, 6, 23, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+    }
+
+    body.theme-light header {
+      background: rgba(244, 244, 245, 0.94);
+      border-bottom-color: var(--border);
     }
 
     .nav-inner {
-      max-width: 1000px;
+      max-width: 1040px;
       margin: 0 auto;
       padding: 10px 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 14px;
     }
 
     .brand {
@@ -68,18 +107,25 @@
       width: 36px;
       height: 36px;
       border-radius: 999px;
-      background: var(--accent);
-      color: #ffffff;
+      background: radial-gradient(circle at top left, #38bdf8, #0f172a);
+      color: #f9fafb;
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 700;
       font-size: 0.9rem;
+      box-shadow: 0 0 22px rgba(56, 189, 248, 0.7);
+      animation: pulseGlow 4s ease-in-out infinite;
     }
 
     .brand-text {
       font-size: 0.85rem;
       font-weight: 600;
+    }
+
+    .brand-sub {
+      font-size: 0.7rem;
+      color: var(--text-muted);
     }
 
     nav ul {
@@ -92,28 +138,70 @@
     nav a {
       text-decoration: none;
       color: var(--text-muted);
-      padding: 4px 10px;
+      padding: 5px 11px;
       border-radius: 999px;
-      transition: background 0.15s ease, color 0.15s ease;
+      transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
     }
 
     nav a:hover {
-      background: var(--accent-soft);
+      background: rgba(56, 189, 248, 0.14);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    body.theme-light nav a:hover {
+      background: var(--bg-soft);
       color: var(--accent);
     }
 
     @media (max-width: 720px) {
       nav ul {
-        display: none; /* keep header super clean on mobile */
+        display: none; /* keep header simple on mobile */
       }
+    }
+
+    /* Theme toggle */
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.85);
+      color: #e5e7eb;
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
+    }
+
+    body.theme-light .theme-toggle {
+      background: #ffffff;
+      color: var(--text-main);
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .theme-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      background: radial-gradient(circle at top, #facc15, #f97316);
+    }
+
+    body.theme-light .theme-dot {
+      background: radial-gradient(circle at top, #0ea5e9, #6366f1);
     }
 
     /* ========= HERO ========= */
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 1.9fr) minmax(0, 1.4fr);
-      gap: 20px;
-      padding: 24px 0 28px;
+      grid-template-columns: minmax(0, 1.9fr) minmax(0, 1.5fr);
+      gap: 22px;
+      padding: 26px 0 30px;
     }
 
     @media (max-width: 720px) {
@@ -126,12 +214,18 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 3px 10px;
+      padding: 4px 10px;
       border-radius: 999px;
       font-size: 0.7rem;
-      background: var(--card-soft);
+      background: rgba(15, 23, 42, 0.85);
       color: var(--text-muted);
       margin-bottom: 10px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+    }
+
+    body.theme-light .pill {
+      background: var(--card-soft);
+      border-color: var(--border);
     }
 
     .pill-dot {
@@ -142,12 +236,14 @@
     }
 
     h1 {
-      font-size: clamp(1.9rem, 3vw, 2.6rem);
+      font-size: clamp(2rem, 3vw, 2.7rem);
       margin-bottom: 8px;
     }
 
     h1 span {
-      color: var(--accent);
+      background-image: linear-gradient(120deg, #38bdf8, #22c55e);
+      -webkit-background-clip: text;
+      color: transparent;
     }
 
     .hero-sub {
@@ -160,7 +256,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
     .btn {
@@ -168,30 +264,43 @@
       align-items: center;
       justify-content: center;
       gap: 6px;
-      padding: 7px 14px;
+      padding: 8px 15px;
       border-radius: 999px;
       border: 1px solid var(--border);
-      background: #ffffff;
+      background: rgba(15, 23, 42, 0.9);
       font-size: 0.82rem;
       text-decoration: none;
-      color: var(--text-main);
+      color: #e5e7eb;
       cursor: pointer;
-      transition: background 0.15s ease, border-color 0.15s ease;
+      transition: background 0.2s ease, border-color 0.2s ease,
+        transform 0.1s ease, box-shadow 0.2s ease;
+    }
+
+    body.theme-light .btn {
+      background: #ffffff;
+      color: var(--text-main);
     }
 
     .btn-primary {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: #ffffff;
+      background: linear-gradient(120deg, #38bdf8, #22c55e);
+      border-color: transparent;
+      color: #020617;
+      font-weight: 600;
+      box-shadow: 0 14px 35px rgba(56, 189, 248, 0.45);
     }
 
     .btn:hover {
+      transform: translateY(-1px);
       border-color: var(--accent);
-      background: #eef2ff;
+      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.7);
+    }
+
+    body.theme-light .btn:hover {
+      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.15);
     }
 
     .btn-primary:hover {
-      background: #1d4ed8;
+      box-shadow: 0 16px 40px rgba(56, 189, 248, 0.65);
     }
 
     .hero-meta {
@@ -207,6 +316,24 @@
       border-radius: var(--radius);
       border: 1px solid var(--border);
       padding: 14px 14px 16px;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle at top, rgba(56, 189, 248, 0.28), transparent 60%);
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .hero-card-inner {
+      position: relative;
+      z-index: 1;
+      animation: floatSoft 8s ease-in-out infinite alternate;
     }
 
     .hero-card h2 {
@@ -223,20 +350,17 @@
     .hero-card p {
       font-size: 0.85rem;
       color: var(--text-muted);
-      margin-bottom: 4px;
+      margin-bottom: 3px;
     }
 
-    .hero-card strong {
-      color: var(--accent);
-    }
-
-    /* ========= SECTIONS / CARDS ========= */
+    /* ========= PANELS ========= */
     section.panel {
       margin-top: 22px;
       background: var(--card);
       border-radius: var(--radius);
       border: 1px solid var(--border);
       padding: 14px 14px 16px;
+      box-shadow: var(--shadow-soft);
     }
 
     .panel-header {
@@ -250,8 +374,20 @@
     }
 
     .panel-sub {
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       color: var(--text-muted);
+    }
+
+    /* Reveal on scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .grid-3 {
@@ -271,7 +407,7 @@
       border-radius: 12px;
       padding: 10px;
       font-size: 0.85rem;
-      border: 1px solid #e5e7eb;
+      border: 1px solid rgba(148, 163, 184, 0.4);
     }
 
     .mini-label {
@@ -287,7 +423,7 @@
       margin-bottom: 2px;
     }
 
-    /* ========= GALLERY SLIDER ========= */
+    /* ========= GALLERY ========= */
     .gallery-layout {
       display: grid;
       grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.3fr);
@@ -304,10 +440,15 @@
     .slider {
       position: relative;
       overflow: hidden;
-      border-radius: 12px;
-      border: 1px solid #e5e7eb;
-      background: #0f172a;
-      color: #ffffff;
+      border-radius: 14px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: #020617;
+      color: #e5e7eb;
+    }
+
+    body.theme-light .slider {
+      background: #020617;
+      color: #e5e7eb;
     }
 
     .slider-track {
@@ -335,7 +476,7 @@
       right: 10px;
       bottom: 8px;
       font-size: 0.8rem;
-      background: rgba(15, 23, 42, 0.8);
+      background: rgba(15, 23, 42, 0.82);
       padding: 6px 8px;
       border-radius: 8px;
     }
@@ -379,7 +520,7 @@
 
     .slider-dot.active {
       width: 14px;
-      background: #60a5fa;
+      background: #38bdf8;
     }
 
     .gallery-text {
@@ -419,6 +560,77 @@
       margin-top: 8px;
     }
 
+    /* ========= QUIZ ========= */
+    .quiz-box {
+      background: var(--card-soft);
+      border-radius: 14px;
+      padding: 12px 12px 14px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      font-size: 0.9rem;
+    }
+
+    .quiz-question {
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .quiz-options {
+      display: grid;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .quiz-option {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      padding: 7px 11px;
+      text-align: left;
+      background: var(--card);
+      cursor: pointer;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      transition: background 0.15s ease, border-color 0.15s ease,
+        transform 0.1s ease;
+    }
+
+    .quiz-option:hover {
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .quiz-option.correct {
+      border-color: #22c55e;
+      background: rgba(34, 197, 94, 0.12);
+    }
+
+    .quiz-option.wrong {
+      border-color: #ef4444;
+      background: rgba(248, 113, 113, 0.12);
+    }
+
+    .quiz-feedback {
+      font-size: 0.85rem;
+      margin-bottom: 8px;
+      color: var(--text-muted);
+    }
+
+    .quiz-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+    }
+
+    .quiz-score {
+      font-weight: 600;
+    }
+
     /* ========= TIMELINE ========= */
     .timeline-row {
       display: flex;
@@ -433,7 +645,7 @@
     }
 
     .timeline-row::-webkit-scrollbar-thumb {
-      background: #cbd5f5;
+      background: rgba(148, 163, 184, 0.7);
       border-radius: 999px;
     }
 
@@ -443,7 +655,7 @@
       background: var(--card-soft);
       border-radius: 12px;
       padding: 8px 10px;
-      border: 1px solid #e5e7eb;
+      border: 1px solid rgba(148, 163, 184, 0.4);
       font-size: 0.8rem;
     }
 
@@ -462,9 +674,9 @@
 
     /* ========= FOOTER ========= */
     footer {
-      margin-top: 24px;
+      margin-top: 26px;
       padding-top: 12px;
-      border-top: 1px solid var(--border);
+      border-top: 1px solid rgba(148, 163, 184, 0.3);
       text-align: center;
       font-size: 0.8rem;
       color: var(--text-muted);
@@ -482,11 +694,33 @@
     }
 
     footer .name {
-      color: var(--accent);
+      color: #38bdf8;
     }
 
     footer .place {
-      color: #16a34a;
+      color: #22c55e;
+    }
+
+    /* ========= KEYFRAMES ========= */
+    @keyframes pulseGlow {
+      0% {
+        box-shadow: 0 0 18px rgba(56, 189, 248, 0.6);
+      }
+      50% {
+        box-shadow: 0 0 28px rgba(56, 189, 248, 1);
+      }
+      100% {
+        box-shadow: 0 0 18px rgba(56, 189, 248, 0.6);
+      }
+    }
+
+    @keyframes floatSoft {
+      0% {
+        transform: translateY(0);
+      }
+      100% {
+        transform: translateY(-6px);
+      }
     }
   </style>
 </head>
@@ -495,71 +729,83 @@
     <div class="nav-inner">
       <div class="brand">
         <div class="brand-logo">VK</div>
-        <div class="brand-text">Virat Kohli – Simple Profile</div>
+        <div>
+          <div class="brand-text">Virat Kohli Universe</div>
+          <div class="brand-sub">Minimal • Neon • Fan Tribute</div>
+        </div>
       </div>
+
       <nav>
         <ul>
           <li><a href="#about">Overview</a></li>
           <li><a href="#stats">Stats</a></li>
           <li><a href="#gallery">Photos</a></li>
           <li><a href="#family">Family</a></li>
+          <li><a href="#quiz">Quiz</a></li>
           <li><a href="#timeline">Timeline</a></li>
         </ul>
       </nav>
+
+      <button class="theme-toggle" id="theme-toggle" type="button">
+        <span class="theme-dot"></span>
+        <span id="theme-label">Dark</span>
+      </button>
     </div>
   </header>
 
   <main>
     <!-- HERO / ABOUT -->
-    <section class="hero" id="about">
+    <section class="hero reveal" id="about">
       <div>
         <div class="pill">
           <span class="pill-dot"></span>
-          Clean, minimalist fan-made page
+          Clean, animated fan-made page
         </div>
         <h1>
-          Everything about <span>Virat Kohli</span> in one simple view.
+          Everything about <span>Virat Kohli</span> in one modern view.
         </h1>
         <p class="hero-sub">
-          Age, career stats, a few photos, and his family details – organised in a
-          calm, easy-to-read layout.
+          Age, career stats, photos, family details and a fun quiz – wrapped in a
+          calm, minimalist but slightly neon design.
         </p>
         <div class="hero-buttons">
           <a href="#stats" class="btn btn-primary">📊 Career stats</a>
           <a href="#gallery" class="btn">🖼️ Photo gallery</a>
-          <a href="#family" class="btn">👨‍👩‍👧‍👦 Family &amp; Virushka</a>
+          <a href="#quiz" class="btn">🧠 Kohli quiz</a>
         </div>
         <div class="hero-meta">
           <span id="age-text">Age: calculating...</span>
           <span>• Right-handed top-order batter</span>
-          <span>• Jersey No. 18</span>
+          <span>• Jersey No. 18 • India</span>
         </div>
       </div>
 
       <div class="hero-card">
-        <h2>Quick snapshot</h2>
-        <div class="hero-card-main">Virat Kohli</div>
-        <p>Born 5 November 1988 • Delhi, India</p>
-        <p>
-          International runs: <strong>27,000+*</strong> across Tests, ODIs &amp;
-          T20Is.
-        </p>
-        <p>
-          Known as the <strong>“Chase Master”</strong> and one of the greatest
-          modern batters.
-        </p>
-        <p style="font-size: 0.78rem; margin-top: 4px; color: var(--text-muted);">
-          *Numbers are approximate and rounded.
-        </p>
+        <div class="hero-card-inner">
+          <h2>Quick snapshot</h2>
+          <div class="hero-card-main">Virat Kohli</div>
+          <p>Born 5 November 1988 • Delhi, India</p>
+          <p>
+            International runs: <strong>27,000+*</strong> across Test, ODI &amp;
+            T20I.
+          </p>
+          <p>
+            Nicknamed the <strong>“Chase Master”</strong> for his unreal chasing
+            records.
+          </p>
+          <p style="font-size: 0.78rem; margin-top: 4px;">
+            *Numbers are approximate and rounded, meant for a fan page.
+          </p>
+        </div>
       </div>
     </section>
 
     <!-- STATS -->
-    <section id="stats" class="panel">
+    <section id="stats" class="panel reveal">
       <div class="panel-header">
         <div class="panel-title">Career stats (approximate)</div>
         <div class="panel-sub">
-          Simple high-level numbers across formats (up to late 2025, rounded).
+          High-level numbers across formats up to around 2025 (rounded).
         </div>
       </div>
 
@@ -589,12 +835,12 @@
     </section>
 
     <!-- GALLERY -->
-    <section id="gallery" class="panel">
+    <section id="gallery" class="panel reveal">
       <div class="panel-header">
         <div class="panel-title">Virat Kohli – photo gallery</div>
         <div class="panel-sub">
-          A few photos in a simple slider. You can replace them with your own
-          images later.
+          A few moments in a simple slider. Uses images from your
+          <code>images</code> folder.
         </div>
       </div>
 
@@ -611,19 +857,19 @@
             <div class="slide">
               <img src="images/virat-1.jpg" alt="Virat Kohli celebrating" />
               <div class="slide-caption">
-                Virat Kohli celebrating another brilliant innings.
+                Virat Kohli celebrating another match-defining knock.
               </div>
             </div>
             <div class="slide">
               <img src="images/virat-2.jpg" alt="Virat Kohli playing a shot" />
               <div class="slide-caption">
-                Classic cover drive – one of his trademark shots.
+                The classic cover drive – pure timing and balance.
               </div>
             </div>
             <div class="slide">
               <img src="images/virat-3.jpg" alt="Virat Kohli roaring" />
               <div class="slide-caption">
-                Intensity and passion that fans love him for.
+                Intensity and passion that lifts the entire team.
               </div>
             </div>
             <div class="slide">
@@ -637,14 +883,13 @@
 
         <div class="gallery-text">
           <p style="margin-bottom: 6px;">
-            How to manage these photos:
+            You can:
           </p>
           <ul style="font-size: 0.83rem; color: var(--text-muted); padding-left: 18px;">
-            <li>Put your images inside the <code>images</code> folder.</li>
-            <li>Keep the names like <code>virat-1.jpg</code>,
-              <code>virat-2.jpg</code>, or change the <code>src=""</code> in the
-              code.</li>
-            <li>You can remove or add slides by editing the
+            <li>Put your Virat photos in the <code>images</code> folder.</li>
+            <li>Keep the names (<code>virat-1.jpg</code>, etc.) or change the
+              <code>src</code> attributes.</li>
+            <li>Add/remove slides by editing the
               <code>&lt;div class="slide"&gt; ...</code> blocks.</li>
           </ul>
         </div>
@@ -652,7 +897,7 @@
     </section>
 
     <!-- FAMILY -->
-    <section id="family" class="panel">
+    <section id="family" class="panel reveal">
       <div class="panel-header">
         <div class="panel-title">Family – Virushka &amp; kids</div>
         <div class="panel-sub">
@@ -668,8 +913,8 @@
               <div class="mini-value">Anushka Sharma</div>
               <div>
                 Bollywood actress and producer. They married on
-                <strong>11 December 2017</strong> in Italy. The couple is often
-                called <strong>“Virushka”</strong>.
+                <strong>11 December 2017</strong> in Italy. Together they are
+                lovingly called <strong>“Virushka”</strong>.
               </div>
             </div>
             <div class="mini-card">
@@ -685,8 +930,8 @@
               <div class="mini-value">Prem &amp; Saroj Kohli</div>
               <div>
                 Father <strong>Prem Kohli</strong> (late) was a lawyer. Mother
-                <strong>Saroj Kohli</strong> has been one of his biggest
-                supporters.
+                <strong>Saroj</strong> has been a strong support throughout his
+                journey.
               </div>
             </div>
             <div class="mini-card">
@@ -700,8 +945,8 @@
           </div>
 
           <p class="family-note">
-            The family prefers to keep their kids’ lives private, so it’s always
-            good to respect that while sharing or using photos.
+            The family is very protective of their kids’ privacy, so it’s always
+            good to be respectful while sharing or using photos.
           </p>
         </div>
 
@@ -721,7 +966,7 @@
                 alt="Virat Kohli with Anushka Sharma"
               />
               <div class="slide-caption">
-                Virat Kohli &amp; Anushka Sharma – one of India’s most loved
+                Virat Kohli &amp; Anushka Sharma – one of India’s most adored
                 couples.
               </div>
             </div>
@@ -731,8 +976,7 @@
                 alt="Virat Kohli with his family"
               />
               <div class="slide-caption">
-                Kohli with his family, who have supported him since his early
-                days.
+                Kohli with his family, who have supported him from the start.
               </div>
             </div>
             <div class="slide">
@@ -741,8 +985,7 @@
                 alt="Young Virat Kohli"
               />
               <div class="slide-caption">
-                Young Virat from his childhood days, long before becoming a
-                global star.
+                A young Virat long before he became “King Kohli”.
               </div>
             </div>
           </div>
@@ -750,12 +993,37 @@
       </div>
     </section>
 
+    <!-- QUIZ -->
+    <section id="quiz" class="panel reveal">
+      <div class="panel-header">
+        <div class="panel-title">Virat Kohli quiz</div>
+        <div class="panel-sub">
+          Test how well you really know King Kohli. Cute messages included 💙
+        </div>
+      </div>
+
+      <div class="quiz-box" id="quiz-box">
+        <div class="quiz-question" id="quiz-question">
+          Loading question...
+        </div>
+        <div class="quiz-options" id="quiz-options"></div>
+        <div class="quiz-feedback" id="quiz-feedback"></div>
+
+        <div class="quiz-footer">
+          <div class="quiz-score" id="quiz-score">Score: 0 / 0</div>
+          <button class="btn" id="quiz-next" type="button" disabled>
+            Next question
+          </button>
+        </div>
+      </div>
+    </section>
+
     <!-- TIMELINE -->
-    <section id="timeline" class="panel">
+    <section id="timeline" class="panel reveal">
       <div class="panel-header">
         <div class="panel-title">Simple career timeline</div>
         <div class="panel-sub">
-          Scroll sideways to see a few key moments from his journey.
+          Scroll sideways to see a few key milestones from his journey.
         </div>
       </div>
 
@@ -763,9 +1031,7 @@
         <div class="timeline-card">
           <div class="timeline-year">1988</div>
           <div class="timeline-title">Born in Delhi</div>
-          <div>
-            Virat Kohli is born on 5 November 1988 in Delhi, India.
-          </div>
+          <div>Virat Kohli is born on 5 November 1988 in Delhi, India.</div>
         </div>
         <div class="timeline-card">
           <div class="timeline-year">2008</div>
@@ -829,14 +1095,35 @@
         <span class="place">Dahgawan!</span>
       </div>
       <div>
-        This is a simple fan-made tribute page. Not an official Virat Kohli or
-        BCCI website.
+        Fan-made tribute page • not an official Virat Kohli or BCCI website.
       </div>
     </footer>
   </main>
 
   <script>
-    // ------- AGE (from DOB) -------
+    // ------- PAGE LOAD ANIMATION -------
+    window.addEventListener("DOMContentLoaded", () => {
+      document.body.classList.add("page-loaded");
+    });
+
+    // ------- THEME TOGGLE -------
+    const themeToggleBtn = document.getElementById("theme-toggle");
+    const themeLabel = document.getElementById("theme-label");
+    const storedTheme = localStorage.getItem("vk-theme");
+
+    if (storedTheme === "light") {
+      document.body.classList.add("theme-light");
+      themeLabel.textContent = "Light";
+    }
+
+    themeToggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("theme-light");
+      const isLight = document.body.classList.contains("theme-light");
+      themeLabel.textContent = isLight ? "Light" : "Dark";
+      localStorage.setItem("vk-theme", isLight ? "light" : "dark");
+    });
+
+    // ------- AGE CALC -------
     (function () {
       const dob = new Date("1988-11-05");
       const today = new Date();
@@ -851,9 +1138,9 @@
       }
     })();
 
-    // ------- SIMPLE STAT COUNTERS -------
+    // ------- STAT COUNTERS -------
     const counters = document.querySelectorAll(".stat-counter");
-    const observer = new IntersectionObserver(
+    const counterObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting && !entry.target.dataset.done) {
@@ -874,9 +1161,24 @@
       },
       { threshold: 0.3 }
     );
-    counters.forEach((c) => observer.observe(c));
+    counters.forEach((c) => counterObserver.observe(c));
 
-    // ------- GENERIC SLIDER (used for Virat & family) -------
+    // ------- REVEAL ON SCROLL -------
+    const revealEls = document.querySelectorAll(".reveal");
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+    revealEls.forEach((el) => revealObserver.observe(el));
+
+    // ------- GENERIC SLIDER (Virat + family) -------
     document.querySelectorAll("[data-slider]").forEach((sliderEl) => {
       const track = sliderEl.querySelector(".slider-track");
       const slides = Array.from(sliderEl.querySelectorAll(".slide"));
@@ -888,7 +1190,6 @@
       let index = 0;
       let timerId = null;
 
-      // dots
       const dots = slides.map((_, i) => {
         const dot = document.createElement("div");
         dot.className = "slider-dot" + (i === 0 ? " active" : "");
@@ -932,6 +1233,138 @@
       update();
       restartAuto();
     });
+
+    // ------- QUIZ LOGIC -------
+    const quizQuestions = [
+      {
+        question: "What is Virat Kohli’s jersey number for India?",
+        options: ["7", "10", "18", "45"],
+        correctIndex: 2,
+        success: "Correct! 18 is iconic – just like your cricket knowledge 🏏💙",
+      },
+      {
+        question: "Which year did Virat Kohli make his ODI debut for India?",
+        options: ["2004", "2006", "2008", "2010"],
+        correctIndex: 2,
+        success: "Spot on! 2008 was the year the run machine arrived 🚀",
+      },
+      {
+        question: "Virat captained India to which ICC trophy at the U19 level?",
+        options: [
+          "U19 Champions Trophy",
+          "U19 World Cup",
+          "U19 Asia Cup",
+          "U19 Test Championship",
+        ],
+        correctIndex: 1,
+        success: "Yes! U19 World Cup – the first big step to greatness 🏆",
+      },
+      {
+        question: "Virat Kohli is often called the “King” of which format's chases?",
+        options: ["Test chases", "T10 chases", "ODI chases", "The Hundred"],
+        correctIndex: 2,
+        success: "King of ODI chases – and clearly you’re king/queen of this quiz 👑",
+      },
+      {
+        question: "Where did Virat and Anushka get married?",
+        options: ["Mumbai", "London", "Italy", "Paris"],
+        correctIndex: 2,
+        success: "Italy it is! Virushka fairytale unlocked 💍✨",
+      },
+    ];
+
+    let quizIndex = 0;
+    let quizScore = 0;
+    const quizQuestionEl = document.getElementById("quiz-question");
+    const quizOptionsEl = document.getElementById("quiz-options");
+    const quizFeedbackEl = document.getElementById("quiz-feedback");
+    const quizScoreEl = document.getElementById("quiz-score");
+    const quizNextBtn = document.getElementById("quiz-next");
+
+    function renderQuizQuestion() {
+      const q = quizQuestions[quizIndex];
+      quizQuestionEl.textContent = `Q${quizIndex + 1}. ${q.question}`;
+      quizOptionsEl.innerHTML = "";
+      quizFeedbackEl.textContent = "";
+      quizNextBtn.disabled = true;
+
+      q.options.forEach((opt, i) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "quiz-option";
+        btn.textContent = opt;
+        btn.addEventListener("click", () => handleAnswer(btn, i));
+        quizOptionsEl.appendChild(btn);
+      });
+
+      updateQuizScore();
+    }
+
+    function updateQuizScore() {
+      quizScoreEl.textContent = `Score: ${quizScore} / ${quizQuestions.length}`;
+    }
+
+    function handleAnswer(selectedBtn, index) {
+      const q = quizQuestions[quizIndex];
+      const optionButtons = quizOptionsEl.querySelectorAll(".quiz-option");
+      optionButtons.forEach((btn) => (btn.disabled = true));
+
+      if (index === q.correctIndex) {
+        selectedBtn.classList.add("correct");
+        quizFeedbackEl.textContent = q.success;
+        quizScore++;
+      } else {
+        selectedBtn.classList.add("wrong");
+        optionButtons[q.correctIndex].classList.add("correct");
+        quizFeedbackEl.textContent =
+          "Not this time – but hey, even Kohli has off days. You’ve got the next one 😉";
+      }
+
+      updateQuizScore();
+      quizNextBtn.disabled = false;
+      quizNextBtn.textContent =
+        quizIndex === quizQuestions.length - 1
+          ? "See result"
+          : "Next question";
+    }
+
+    quizNextBtn.addEventListener("click", () => {
+      if (quizIndex < quizQuestions.length - 1) {
+        quizIndex++;
+        renderQuizQuestion();
+      } else {
+        showQuizResult();
+      }
+    });
+
+    function showQuizResult() {
+      quizOptionsEl.innerHTML = "";
+      quizNextBtn.disabled = true;
+
+      let message = "";
+      const score = quizScore;
+      const total = quizQuestions.length;
+
+      if (score === total) {
+        message =
+          "Unbelievable! A perfect score. You’re officially a certified Kohli superfan 🏏👑";
+      } else if (score >= total - 1) {
+        message =
+          "So close to perfection – you clearly follow King Kohli very closely 💙";
+      } else if (score >= Math.ceil(total / 2)) {
+        message =
+          "Nice! You know quite a bit. A few more matches and you’ll be elite level 😉";
+      } else {
+        message =
+          "Every legend starts somewhere. Keep watching Kohli play and try the quiz again 🔁";
+      }
+
+      quizQuestionEl.textContent = "Your result 🎉";
+      quizFeedbackEl.textContent = message;
+      updateQuizScore();
+    }
+
+    renderQuizQuestion();
   </script>
 </body>
 </html>
